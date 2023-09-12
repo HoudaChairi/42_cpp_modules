@@ -6,11 +6,23 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:38:21 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/07 10:59:51 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/09/11 15:59:07 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
+
+Contact::Contact() {};
+
+// ajoute default constracter 
+Contact::Contact(std::string f, std::string l, std::string n, std::string p, std::string d)
+{
+   FirstName = f;
+    LastName = l;
+    Nickname = n;
+    PhoneNumber = p;
+    DarkSecret = d;
+}
 
 void    Contact::setFirstName(std::string value)
 {
@@ -19,22 +31,22 @@ void    Contact::setFirstName(std::string value)
 
 void    Contact::setLastName(std::string value)
 {
-   lastName = value;
+   LastName = value;
 }
 
 void    Contact::setNickname(std::string value)
 {
-   lastName = value;
+   Nickname = value;
 }
 
 void    Contact::setPhoneNumber(std::string value)
 {
-   lastName = value;
+   PhoneNumber = value;
 }
 
 void    Contact::setDarkSecret(std::string value)
 {
-   lastName = value;
+   DarkSecret = value;
 }
 
 std::string Contact::getFirstName()
@@ -44,7 +56,7 @@ std::string Contact::getFirstName()
 
 std::string Contact::getLastName()
 {
-    return (lastName);
+    return (LastName);
 }
 
 std::string Contact::getNickname()

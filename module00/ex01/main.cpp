@@ -6,65 +6,110 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 22:35:17 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/07 15:00:58 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/09/11 22:41:30 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
-int check(std::string input)
+int isNumber(std::string s)
 {
-    if (input.length() == 0)
-        std::cout << "La chaîne est vide." << std::endl;
-    return (0);
+    int x = 0;
+ 
+    x = s.length();
+    for(int i = 0; i < x; i++)
+        if (!isdigit(s[i]))
+            return (0);
+    return (1);
 }
 
-void    ContactInfo(Contact info, std::string input)
+int isAlpha(std::string s)
 {
-    std::cout << "Can you please enter your First Name!" << std::endl;
-    std::getline(std::cin, input);
-    info.setFirstName(input);
-    // std::cout << "First Name input: " << input << std::endl;
-    std::cout << "First Name : " << info.getFirstName() << std::endl;
-    std::cout << "Can you please enter your Last Name!" << std::endl;
-    std::getline(std::cin, input);
-    info.setLastName(input);
-    info.getLastName();
-    
-    std::cout << "Can you please enter your Nickname!" << std::endl;
-    std::getline(std::cin, input);
-    info.setNickname(input);
+    int x = 0;
 
-    std::cout << "Can you please enter your PhoneNumber!" << std::endl;
-    std::getline(std::cin, input);
-    info.setPhoneNumber(input);
-    
-    std::cout << "Can you please enter your DarkSecret!" << std::endl;
-    std::getline(std::cin, input);
-    info.setDarkSecret(input);
-    for (int i = 0; i < 5; ++i)
-                std::cout << "info " << input << std::endl;
+    x = s.length();
+    for(int i = 0; i < x; i++)
+        if (!isalpha(s[i]))
+            return (0);
+    return (1);
 }
+
+void    setInfo(Contact& info, t_info& tmp)
+{
+    info.setFirstName(tmp.fName);
+    info.setLastName(tmp.lName);
+    info.setNickname(tmp.nName);
+    info.setPhoneNumber(tmp.pNumber);
+    info.setDarkSecret(tmp.dSecret);
+}
+
+int    fill(std::string message, std::string& s)
+{
+    std::cout << message << std::endl;
+    std::getline(std::cin, s);
+    while (!isAlpha(s) || s.empty())
+    {
+        if (std::cin.eof())
+            return (EXIT_FAILURE);
+        std::cout << message << std::endl;
+        std::getline(std::cin, s);
+    }
+    return (EXIT_SUCCESS);
+}
+
+int    fillNum(std::string message, std::string& s)
+{
+    std::cout << message << std::endl;
+    std::getline(std::cin, s);
+    while (!isNumber(s) || s.empty())
+    {
+        if (std::cin.eof())
+            return (EXIT_FAILURE);
+        std::cout << message << std::endl;
+        std::getline(std::cin, s);
+    }
+    return (EXIT_SUCCESS);
+}
+
+void    contactInfo(Contact& info)
+{
+    t_info      tmp;
+    
+    if (fill("Enter first name: ", tmp.fName))
+        return ;
+    if (fill("Enter last name: ", tmp.lName))
+        return ;
+    if (fill("Enter nickname: ", tmp.nName))
+        return ;
+    if (fillNum("Enter a number: ", tmp.pNumber))
+        return ;
+    if (fill("Enter darkSecret: ", tmp.dSecret))
+        return ;
+    setInfo(info, tmp);
+} 
 
 int main()
 {
-    Contact info;
+    Contact     info;
+    PhoneBook   book;
     std::string input;
-
+     
     std::cout << "Welcome!" << std::endl;
-    std::cout << "enter one of three commands : ADD, SEARCH and EXIT." << std::endl;
-   
-    std::getline(std::cin, input);
     while (input != "EXIT")
     {
-        if (input == "ADD")
-        {
-            ContactInfo(info, input); // harf lwel en majus ?
+        if (std::cin.eof())
             break;
+        std::cout << "Enter command : ADD, SEARCH and EXIT." << std::endl;
+        if (!std::getline(std::cin, input))
+            break;
+        else if (input == "ADD")
+        {
+            contactInfo(info);
+            book.add(info);
         }
-        // else if (input == "SEARCH")
-        //     std::cout << "SEARCH UN CONTACT" << std::endl;
+        else if (input == "SEARCH")
+            book.search();
     }
     return (0);
 }

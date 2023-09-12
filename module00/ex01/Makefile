@@ -3,13 +3,15 @@ CPP = c++
 FLAGS = -Wall -Wextra -Werror -std=c++98
 
 SRC = $(wildcard *.cpp)
-
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME): $(OBJ)
 	$(CPP) $(FLAGS) $(SRC) -o $@
+
+%.o: %.cpp
+	$(CPP) $(FLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
@@ -19,4 +21,4 @@ fclean: clean
 
 re: fclean all
 
-.phony: all clean fclean re
+.PHONY: all clean fclean re

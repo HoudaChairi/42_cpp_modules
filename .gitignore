@@ -1,0 +1,5 @@
+*.o
+.DS_Store
+.vscode
+to_do
+README.md
