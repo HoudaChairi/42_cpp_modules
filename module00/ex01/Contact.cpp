@@ -6,18 +6,18 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 13:38:21 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/11 15:59:07 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/09/17 12:38:54 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
+//default constracter 
 Contact::Contact() {};
 
-// ajoute default constracter 
 Contact::Contact(std::string f, std::string l, std::string n, std::string p, std::string d)
 {
-   FirstName = f;
+    FirstName = f;
     LastName = l;
     Nickname = n;
     PhoneNumber = p;

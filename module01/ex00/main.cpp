@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/05 22:30:59 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/17 13:01:01 by hchairi          ###   ########.fr       */
+/*   Created: 2023/09/13 08:40:17 by hchairi           #+#    #+#             */
+/*   Updated: 2023/09/14 10:24:39 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "Zombie.hpp"
 
-#include <iostream>
-#include <string>
-#include "Contact.hpp"
-
-class PhoneBook
+int main()
 {
-    private:
-        Contact array[8];
-        int numCont;
-    public:
-        PhoneBook();
-        ~PhoneBook();
-        void    add(Contact& newCont);
-        void    showContacts();
-        void    search();
-}   ;
-
-#endif
+    Zombie zombie("test");
+    zombie.announce();
+    
+    Zombie *ptr = zombie.newZombie("new");
+    ptr->announce();
+    
+    zombie.randomChump("check");
+    delete ptr, ptr = NULL;
+}

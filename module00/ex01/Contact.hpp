@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 11:06:28 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/11 22:31:53 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/09/17 15:18:47 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_info
     std::string dSecret;
 }   t_info;
 
-void    contactInfo(Contact& info);
-int isAlpha(std::string s);
+void    contactInfo(PhoneBook  &book);
+int     isAlpha(std::string s);
 
 #endif

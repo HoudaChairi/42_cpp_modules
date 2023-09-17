@@ -6,13 +6,15 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/05 22:30:20 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/11 15:55:10 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/09/17 15:17:32 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 
 PhoneBook::PhoneBook() : numCont(0) {}
+
+PhoneBook::~PhoneBook() {}
 
 void    PhoneBook::add(Contact& newCont)
 {
