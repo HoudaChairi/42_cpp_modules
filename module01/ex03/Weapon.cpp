@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 08:41:34 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/25 14:57:58 by hchairi          ###   ########.fr       */
+/*   Created: 2023/09/18 11:06:16 by hchairi           #+#    #+#             */
+/*   Updated: 2023/09/26 15:14:34 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Weapon.hpp"
 
-void Zombie::randomChump(std::string name)
+Weapon::Weapon(std::string typeV)
 {
-    Zombie zombie(name);
-    zombie.announce();
+    this->type = typeV;
+}
+
+Weapon::~Weapon() {}
+
+void Weapon::setType(std::string typeV)
+{
+    type = typeV;
+}
+
+const std::string& Weapon::getType() const
+{
+    return type;
 }

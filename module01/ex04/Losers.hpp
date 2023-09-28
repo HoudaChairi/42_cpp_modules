@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   Losers.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 08:41:34 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/25 14:57:58 by hchairi          ###   ########.fr       */
+/*   Created: 2023/09/20 18:38:00 by hchairi           #+#    #+#             */
+/*   Updated: 2023/09/27 20:14:45 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef LOSERS_HPP
+#define LOSERS_HPP
 
-void Zombie::randomChump(std::string name)
-{
-    Zombie zombie(name);
-    zombie.announce();
-}
+#include <fstream>
+#include <iostream>   
+#include <string>
+
+
+#endif

@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 08:41:34 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/25 14:57:58 by hchairi          ###   ########.fr       */
+/*   Created: 2023/09/22 20:40:59 by hchairi           #+#    #+#             */
+/*   Updated: 2023/09/24 11:54:34 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Harl.hpp"
 
-void Zombie::randomChump(std::string name)
+int main()
 {
-    Zombie zombie(name);
-    zombie.announce();
+    Harl harl;
+    std::string level;
+
+    std::cout << "Enter un Niveau : debug, info, warning or error" << std::endl;
+    std::cin >> level;
+    
+    harl.complain(level);
+
+    return (0);
 }

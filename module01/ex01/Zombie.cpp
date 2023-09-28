@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/14 11:06:05 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/14 14:54:58 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/09/18 13:26:07 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,7 @@ Zombie::Zombie(std::string value)
     name = value;
 }
 
-// Zombie::~Zombie() {}
-
+Zombie::~Zombie() {}
 
 void Zombie::setName(std::string newN)
 {
