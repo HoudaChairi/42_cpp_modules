@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 20:16:41 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/16 10:40:53 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/17 16:30:14 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ attackDamage(0)
 }
 
 //constructer
-ClapTrap::ClapTrap(std::string _name) : 
-name(_name), 
-hitPoints(10), 
+ClapTrap::ClapTrap(std::string &_name) : name(_name),hitPoints(10), 
 energyPoints(10), 
 attackDamage(0)
 {

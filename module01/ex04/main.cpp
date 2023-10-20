@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 18:36:16 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/27 12:37:09 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/20 15:27:00 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ int main(int ac, char **av)
                 line.insert(pos, s2);
                 pos += s2.length();
             }
-            outFile << line << "\n";
+            outFile << line;
+            if (!inFile.eof())
+                outFile << "\n";
         }
         inFile.close();
         outFile.close();

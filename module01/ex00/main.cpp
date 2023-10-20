@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 08:40:17 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/27 17:02:40 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/20 15:23:46 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int main()
     Zombie zombie("test");
     zombie.announce();
     
-    Zombie *ptr = zombie.newZombie("new");
+    Zombie *ptr = newZombie("new");
     ptr->announce();
     
-    zombie.randomChump("check");
+    randomChump("check");
     delete ptr, ptr = NULL;
 }
