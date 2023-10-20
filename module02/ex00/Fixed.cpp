@@ -6,14 +6,16 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:23:14 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/04 12:30:06 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/19 18:15:45 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
+const int Fixed::nbit = 8;
+
 // default constructer
-Fixed::Fixed() 
+Fixed::Fixed()
 {
     std::cout << "Default constructor called " << std::endl;
     this->fixedP = 0;
@@ -23,7 +25,7 @@ Fixed::Fixed()
 Fixed::Fixed(const Fixed& obj)
 {
     std::cout << "Copy constructor called " << std::endl;
-    operator=(obj); //assign the values of the existing object to the newly created object.
+    operator=(obj);
 }
 
 // Copy assignment operator

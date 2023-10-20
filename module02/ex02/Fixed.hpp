@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 10:55:23 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/10 16:52:46 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/19 18:50:11 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
     private:
         int fixedP;
-        static const int nbit = 8; // why static
+        static const int nbit;
     public:
         Fixed();
         Fixed(const int intNum);

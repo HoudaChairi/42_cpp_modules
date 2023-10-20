@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:23:05 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/04 12:28:18 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/19 19:39:01 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void)
     Fixed a;
     Fixed b( a );
     Fixed c;
-    
+     
     c = b;
     
     std::cout << a.getRawBits() << std::endl;

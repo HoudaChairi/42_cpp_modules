@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:35:06 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/05 19:21:47 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/19 18:14:47 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class Fixed
 {
     private:
         int fixedP;
-        static const int nbit = 8; // why static
+        static const int nbit;
     public:
         // Orthodox Canonical Form
         Fixed();

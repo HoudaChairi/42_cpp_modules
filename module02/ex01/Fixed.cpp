@@ -6,11 +6,13 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:34:54 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/09 12:26:47 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/19 18:45:55 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+
+const int Fixed::nbit = 8;
 
 Fixed::Fixed() 
 {
@@ -21,7 +23,7 @@ Fixed::Fixed()
 Fixed::Fixed(const Fixed& obj)
 {
     std::cout << "Copy constructor called " << std::endl;
-    operator=(obj); //assign the values of the existing object to the newly created object.
+    operator=(obj);
 }
 
 Fixed& Fixed::operator=(const Fixed& obj)
@@ -39,7 +41,6 @@ Fixed::~Fixed()
 
 int Fixed::getRawBits(void) const
 {
-    // std::cout << "getRawBits member function called " << std::endl;
     return (fixedP);   
 }
 
@@ -47,19 +48,19 @@ void Fixed::setRawBits(int const raw)
 {
     fixedP = raw;
 }
+// constructer  converts the integer to fixed-point
+// all you need to do is left-shift the integer by the number of fractional bits:
+// Multiply the integer by 2^8 (which is equivalent to shifting left by 8 bits)
 Fixed::Fixed(const int intNum)
 {
     std::cout << "Int constructor called " << std::endl;
-    fixedP = intNum << nbit; // Multiply the integer by 2^8 (which is equivalent to shifting left by 8 bits)
-    //his converts the integer to fixed-point format with 8 bits for the fractional part
+    fixedP = intNum << nbit;
 }
-
+// constructer converts the floating-point number to fixed-point
 Fixed::Fixed(const float floatNum)
 {
-    // Multiply the floating-point number by 2^8 (which is equivalent to shifting left by 8 bits)
-    // This converts the floating-point number to fixed-point format with 8 bits for the fractional part
     std::cout << "Float constructor called " << std::endl;
-    fixedP = round(floatNum * (1 << nbit));
+    fixedP = roundf(floatNum * (1 << nbit));
 }
 
 float Fixed::toFloat(void) const 
@@ -77,5 +78,3 @@ std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
     os << fixed.toFloat();
     return os;
 }
-// this code allows you to print a Fixed object 
-//by converting it to a float value and then outputting it to the standard output stream.
