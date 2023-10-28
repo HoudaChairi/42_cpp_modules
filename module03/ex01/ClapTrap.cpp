@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 20:16:41 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/16 10:41:26 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/28 12:32:45 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void ClapTrap::takeDamage(unsigned int amount)
         std::cout << "ClapTrap " << name << " is dead" << std::endl;
     else
     {
-        // darba l9adia
         if (amount >= hitPoints)
         {
             hitPoints = 0;

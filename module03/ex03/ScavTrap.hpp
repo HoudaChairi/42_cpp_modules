@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 13:30:23 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/25 10:56:39 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/10/28 12:35:45 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ class ScavTrap : virtual public ClapTrap
         void attack(const std::string& target);
         void guardGate();
 };
-
-
 
 
 #endif
