@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 08:43:10 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/20 20:09:35 by hchairi          ###   ########.fr       */
+/*   Created: 2023/10/21 12:21:14 by hchairi           #+#    #+#             */
+/*   Updated: 2023/10/22 20:39:21 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef ANIMAL_HPP
+#define ANIMAL_HPP
 
-#include <string>
 #include <iostream>
 
-class Zombie
+class Animal
 {
-    private:
-        std::string name;
-    public:
-        Zombie();
-        Zombie(std::string name);
-        ~Zombie();
-        void announce(void);
-       
+    protected:
+        std::string type;
+    public: // don't forget canonical form 
+        Animal();
+        Animal(std::string _type);
+        Animal(const Animal& copy);
+        Animal& operator=(const Animal& obj);
+        virtual ~Animal();
+        std::string getType() const;
+        virtual void makeSound()const;
 };
 
-Zombie* newZombie(std::string name);
-void randomChump( std::string name );
+
 
 #endif

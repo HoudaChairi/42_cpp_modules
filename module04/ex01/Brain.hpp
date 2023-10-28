@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 08:43:10 by hchairi           #+#    #+#             */
-/*   Updated: 2023/09/20 20:09:35 by hchairi          ###   ########.fr       */
+/*   Created: 2023/10/23 12:47:20 by hchairi           #+#    #+#             */
+/*   Updated: 2023/10/23 17:14:05 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#ifndef BRAIN_HPP
+#define BRAIN_HPP
 
-#include <string>
 #include <iostream>
 
-class Zombie
+class Brain
 {
     private:
-        std::string name;
+        std::string ideas[100];
     public:
-        Zombie();
-        Zombie(std::string name);
-        ~Zombie();
-        void announce(void);
-       
+        Brain();
+        Brain(std::string _ideas[]);
+        Brain(const Brain& copy);
+        Brain& operator=(const Brain& obj);
+        ~Brain();
 };
-
-Zombie* newZombie(std::string name);
-void randomChump( std::string name );
 
 #endif

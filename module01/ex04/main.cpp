@@ -33,7 +33,9 @@ int main(int ac, char **av)
                 line.insert(pos, s2);
                 pos += s2.length();
             }
-            outFile << line << "\n";
+            outFile << line;
+            if (!inFile.eof())
+                outFile << "\n";
         }
         inFile.close();
         outFile.close();
