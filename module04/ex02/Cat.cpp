@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Dog.cpp                                            :+:      :+:    :+:   */
+/*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 12:25:39 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:18:53 by hchairi          ###   ########.fr       */
+/*   Created: 2023/10/21 12:25:35 by hchairi           #+#    #+#             */
+/*   Updated: 2023/11/07 10:19:50 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 
-Dog::Dog() : Animal()
+Cat::Cat() : AAnimal()
 {
-    type = "Dog";
+    type = "Cat";
     brain = new Brain();
-    std::cout << "Dog: default constructor called " << std::endl; 
+    std::cout << "Cat: default constructor called " << std::endl; 
 }
 
-Dog::~Dog()
+Cat::~Cat()
 {
-    std::cout << "Dog: destructor called " << std::endl; 
+    std::cout << "Cat: destructor called " << std::endl;
     delete brain;
 }
-
-Dog::Dog(const Dog& copy) : Animal(copy)
+Cat::Cat(const Cat& copy)
 {
     this->brain = new Brain(*copy.brain);
     this->type = copy.type;
-    std::cout << "Dog: copy constructer called " << std::endl;
+    std::cout << "Cat: copy constructer called " << std::endl;
 }
 
-Dog& Dog::operator=(const Dog& obj)
+Cat& Cat::operator=(const Cat& obj)
 {
     if (this != &obj)
     {
@@ -40,11 +39,11 @@ Dog& Dog::operator=(const Dog& obj)
         this->brain = new Brain(*obj.brain);
         type = obj.type;
     }
-    std::cout << "Dog: copy assignment operator called " << std::endl;
+    std::cout << "Cat: copy assignment operator called " << std::endl;
     return (*this);
 }
 
-void Dog::makeSound()const
+void Cat::makeSound()const
 {
-    std::cout << "Dog: Woof!" << std::endl;
+    std::cout << "Cat: Meaw!" << std::endl;
 }

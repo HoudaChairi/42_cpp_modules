@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 12:25:31 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/22 20:44:22 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:17:14 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ class Cat : public Animal
 {
     public:
         Cat();
-        Cat(std::string _type);
         Cat(const Cat& copy);
         Cat& operator=(const Cat& obj);
         ~Cat();
         void makeSound() const;
 };
-
-
 
 #endif

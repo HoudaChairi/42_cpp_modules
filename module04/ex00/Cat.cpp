@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 12:25:35 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/23 12:27:21 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:17:08 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,17 @@ Cat::Cat() : Animal()
     std::cout << "Cat: default constructor called " << std::endl; 
 }
 
-Cat::Cat(std::string _type) : Animal(_type)
-{
-    type = _type;
-    std::cout << "Cat: constructor called" << std::endl;
-}
-
 Cat::~Cat()
 {
     std::cout << "Cat: destructor called " << std::endl; 
 }
-//copy constructer 
+
 Cat::Cat(const Cat& copy)
 {
     type = copy.type;
     std::cout << "Cat: copy constructer called " << std::endl;
 }
 
-// assignement operator
 Cat& Cat::operator=(const Cat& obj)
 {
     if (this != &obj)
@@ -46,5 +39,5 @@ Cat& Cat::operator=(const Cat& obj)
 
 void Cat::makeSound()const
 {
-    std::cout << "Cat: sound ..." << std::endl;
+    std::cout << "Cat: Meaw!" << std::endl;
 }

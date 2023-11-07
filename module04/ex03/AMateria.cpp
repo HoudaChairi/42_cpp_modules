@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.hpp                                         :+:      :+:    :+:   */
+/*   AMateria.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 12:21:14 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:16:58 by hchairi          ###   ########.fr       */
+/*   Created: 2023/10/31 18:34:12 by hchairi           #+#    #+#             */
+/*   Updated: 2023/11/06 19:06:32 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ANIMAL_HPP
-#define ANIMAL_HPP
+#include "AMateria.hpp"
 
-#include <iostream>
+AMateria::~AMateria() {}
 
-class Animal
+AMateria::AMateria(const std::string& type) : type(type) {}
+
+std::string const& AMateria::getType() const
 {
-    protected:
-        std::string type;
-    public:
-        Animal();
-        Animal(const Animal& copy);
-        Animal& operator=(const Animal& obj);
-        virtual ~Animal();
-        
-        std::string getType() const;
-        virtual void makeSound()const;
-};
+    return (type);
+}
 
-#endif
+void AMateria::use(ICharacter& target)
+{
+    std::cout << "Using " << type << " on " << target.getName() << std::endl;
+}

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 13:32:46 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/23 12:57:28 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/06 11:04:15 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main()
 //     const WrongAnimal* i = new WrongCat();
 //     std::cout << j->getType() << " " << std::endl;
 //     std::cout << i->getType() << " " << std::endl;
-//     i->makeSound(); //will output the cat sound!
+//     i->makeSound();
 //     j->makeSound();
 //     meta->makeSound();
 

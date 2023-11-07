@@ -6,13 +6,13 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 12:25:39 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:18:53 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:19:59 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog() : AAnimal()
 {
     type = "Dog";
     brain = new Brain();
@@ -25,7 +25,7 @@ Dog::~Dog()
     delete brain;
 }
 
-Dog::Dog(const Dog& copy) : Animal(copy)
+Dog::Dog(const Dog& copy) : AAnimal(copy)
 {
     this->brain = new Brain(*copy.brain);
     this->type = copy.type;

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:47:13 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:18:35 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:19:41 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,28 +15,27 @@
 Brain::Brain() 
 {
     for (int i = 0; i < 100; i++)
-        _ideas[i] = "Default idea";
+        ideas[i] = "Default idea";
     std::cout << "Brain: default constructor called " << std::endl;
 }
 
-Brain::Brain(std::string ideas[])
+Brain::Brain(std::string _ideas[])
 {
     for (int i = 0; i < 100; i++)
-        _ideas[i] = ideas[i];
+        ideas[i] = _ideas[i];
     std::cout << "Brain: constructor called " << std::endl; 
 }
-
 Brain::Brain(const Brain& copy)
 {
     for (int i = 0; i < 100; i++)
-       _ideas[i] = copy._ideas[i];
+        ideas[i] = copy.ideas[i];
     std::cout << "Brain: copy constructer called " << std::endl;
 }
 Brain& Brain::operator=(const Brain& obj)
 {
     if (this != &obj)
         for (int i = 0; i < 100; i++)
-            _ideas[i] = obj._ideas[i];
+            ideas[i] = obj.ideas[i];
     std::cout << "Brain: copy assignment operator called " << std::endl;
     return (*this);
 }

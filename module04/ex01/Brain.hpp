@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:47:20 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/23 17:14:05 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/06 10:02:42 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 class Brain
 {
     private:
-        std::string ideas[100];
+        std::string _ideas[100];
     public:
         Brain();
-        Brain(std::string _ideas[]);
+        Brain(std::string ideas[]);
         Brain(const Brain& copy);
         Brain& operator=(const Brain& obj);
         ~Brain();

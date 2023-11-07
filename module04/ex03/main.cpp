@@ -5,29 +5,35 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/21 13:32:46 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/06 17:48:03 by hchairi          ###   ########.fr       */
+/*   Created: 2023/10/31 18:26:35 by hchairi           #+#    #+#             */
+/*   Updated: 2023/11/07 10:26:20 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
-#include "Dog.hpp"
-#include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
-
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "ICharacter.hpp"
+#include "Character.hpp"
+#include "AMateria.hpp"
+#include "Cure.hpp"
+#include "Ice.hpp"
 
 int main()
 {
-   Cat cat;
-   Dog dog;
-
-   Animal *a1 = &cat;
-   Animal *a2 = &dog;
-
-   Animal *arr[] = {a1, a2};
-   for (int i = 0; i < 2; i++)
-      arr[i]->makeSound();
-   return 0;
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
 }
-

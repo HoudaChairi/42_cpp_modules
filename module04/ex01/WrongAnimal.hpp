@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:45:13 by hchairi           #+#    #+#             */
-/*   Updated: 2023/10/23 12:00:13 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 10:19:08 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ class WrongAnimal
         WrongAnimal(const WrongAnimal& copy);
         WrongAnimal& operator=(const WrongAnimal& obj);
         virtual ~WrongAnimal();
+        
         void makeSound()const;
         std::string getType() const;    
 };
-
 
 #endif
