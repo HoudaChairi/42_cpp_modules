@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:43:58 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:19:04 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:20:12 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ WrongAnimal::WrongAnimal()
 WrongAnimal::~WrongAnimal() 
 {
     std::cout << "WrongAnimal: destructor called " << std::endl; 
-}
-
-WrongAnimal::WrongAnimal(std::string _type) :  type(_type) 
-{
-    std::cout << "WrongAnimal: constructor called" << std::endl;
 }
 
 WrongAnimal::WrongAnimal(const WrongAnimal& copy)

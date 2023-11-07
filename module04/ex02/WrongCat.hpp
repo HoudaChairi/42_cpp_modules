@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/22 19:44:32 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:20:37 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:21:07 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ class WrongCat : public WrongAnimal
 {
     public:
         WrongCat();
-        WrongCat(std::string _type);
         WrongCat(const WrongCat& copy);
         WrongCat& operator=(const WrongCat& obj);
         ~WrongCat();

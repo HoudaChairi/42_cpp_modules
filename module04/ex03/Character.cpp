@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:31:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:21:23 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 12:34:21 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ Character& Character::operator=(const Character& obj)
         for(int i = 0; i < 4; i++)
         {
             if (inventaire[i])
-                delete inventaire[i]; 
+                delete inventaire[i];
             if (unequip_Inv[i])
                 delete unequip_Inv[i]; 
         }
@@ -114,7 +114,6 @@ void Character::unequip(int idx)
         unequip_Inv[idx] = inventaire[idx];
         inventaire[idx] = NULL;
     }
-
 }
 
 void Character::use(int idx, ICharacter& target)

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 12:25:41 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:17:25 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:27:31 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ class Dog : public Animal
         Dog(const Dog& copy);
         Dog& operator=(const Dog& obj);
         ~Dog();
+        
         void makeSound()const;
 };
 

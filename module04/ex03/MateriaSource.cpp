@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 20:33:26 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:26:55 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:44:22 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ void MateriaSource::learnMateria(AMateria* materia)
         {
             if (_materia[i] == NULL)
             {
-                _materia[i] = materia->clone();
-                delete materia;
+                _materia[i] = materia;
                 break ;
             }
         }

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:47:13 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/07 10:18:35 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/07 15:12:30 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,6 @@ Brain::Brain()
     for (int i = 0; i < 100; i++)
         _ideas[i] = "Default idea";
     std::cout << "Brain: default constructor called " << std::endl;
-}
-
-Brain::Brain(std::string ideas[])
-{
-    for (int i = 0; i < 100; i++)
-        _ideas[i] = ideas[i];
-    std::cout << "Brain: constructor called " << std::endl; 
 }
 
 Brain::Brain(const Brain& copy)
