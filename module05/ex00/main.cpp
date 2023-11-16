@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:01:38 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/11 11:14:14 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/15 12:31:23 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,18 @@
 
 int main()
 {
-    std::string str = "Houda";
     try 
     {
-        Bureaucrat bureau("hi", 5);
-        bureau.decrementGrade();
-        std::cout << bureau.getGrade() << std::endl;
-        std::cout << bureau;
+        Bureaucrat bcrat("Sokrate", 2);
+        
+        std::cout << bcrat;
+        bcrat.decrementGrade();
+        std::cout << "After decrementing: " << bcrat;
+        bcrat.incrementGrade();
+        std::cout << "After incrementing: " << bcrat;
     }
     catch (std::exception &e)
     {
       std::cout << e.what() << std::endl;  
     }
-    // catch(Bureaucrat::GradeTooHighException &e)
-    // {
-    //   std::cout << e.what() << std::endl;  
-    // }
-    // catch(Bureaucrat::GradeTooLowException &e)
-    // {
-    //   std::cout << e.what() << std::endl;  
-    // }
 }

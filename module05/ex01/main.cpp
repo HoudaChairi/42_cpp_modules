@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 12:01:38 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/11 16:47:27 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/15 18:35:18 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,14 @@
 
 int main()
 {
-    try 
+    try
     {
-        Bureaucrat bc("Seqrat", 22);
+        Bureaucrat bc("Sokrate", 1);
         Form form("form", 5, 10);
+        std::cout << bc;
         std::cout << form;
+        form.beSigned(bc);
+        std::cout << "check was signed? => " << form.getIsSigned() << std::endl;
         bc.signForm(form);
     }
     catch (std::exception &e)

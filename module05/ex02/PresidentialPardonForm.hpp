@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:32:12 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/12 11:00:41 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/15 18:54:35 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,5 @@ class PresidentialPardonForm : public AForm
 
         void execute(Bureaucrat const & executor) const;
 };
-
-
 
 #endif

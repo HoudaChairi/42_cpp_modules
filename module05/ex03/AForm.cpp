@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:50:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/16 11:41:31 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/16 11:41:26 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void AForm::beSigned(const Bureaucrat& bCrat)
         throw GradeTooLowException();
     _isSigned = true;
 }
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
 const char  *AForm::GradeTooHighException::what() const throw()
 {
     return ("Grade is too high!");
@@ -88,7 +88,6 @@ const char  *AForm::GradeTooLowException::what() const throw()
 {
     return ("Grade is too low!");
 }
-
 const char  *AForm::SignedFormException::what() const throw()
 {
     return ("The form is not signed.");

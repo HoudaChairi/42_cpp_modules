@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:50:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/11 16:02:33 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/16 10:23:56 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ Form& Form::operator=(const Form& obj)
     return (*this);
 }
 
+//~~~~~~~~~~~ getters ~~~~~~~~~~~//
 std::string Form::getName() const
 {
     return (_name);
@@ -61,6 +62,7 @@ int Form::getExecuteGrade() const
     return (_executeGrade);
 }
 
+//~~~~~  overload of («) operator ~~~~~//
 std::ostream& operator<<(std::ostream& os, const Form& Form)
 {
     os << "Name: " << Form.getName() << std::endl;
@@ -70,10 +72,22 @@ std::ostream& operator<<(std::ostream& os, const Form& Form)
     return (os);
 }
 
-// if (grade de bureauCrat <= _signGrade : _isSigned = true else throw)
+//~~ changes the form status to signed ~~//
+//~~ if the bureaucrat’s grade is high ~~//
 void Form::beSigned(const Bureaucrat& bCrat)
 {
     if (bCrat.getGrade() > _signGrade) 
         throw GradeTooLowException();
     _isSigned = true;
+}
+
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~//
+const char  *Form::GradeTooHighException::what() const throw()
+{
+    return ("Grade is too high!");
+}
+
+const char  *Form::GradeTooLowException::what() const throw()
+{
+    return ("Grade is too low!");
 }

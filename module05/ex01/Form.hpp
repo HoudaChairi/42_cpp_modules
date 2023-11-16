@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:51:06 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/11 16:02:41 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/16 10:24:32 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,34 +26,29 @@ class Form
         const int        _signGrade;
         const int        _executeGrade;
     public:
+        //canonical Form
         Form();
         Form(const std::string name, const int signGrade, const int executeGrade);
         Form(const Form& copy);
         Form& operator=(const Form& obj);
         ~Form();
-        
+        // Getters:
         std::string getName() const;
         bool getIsSigned() const;
         int getSignGrade() const;
         int getExecuteGrade() const;
-
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
         void beSigned(const Bureaucrat& bCrat);
         class GradeTooHighException : public std::exception
         {
             public:
-                const char  *what() const throw()
-                {
-                    return ("Grade is too high!");
-                }
+                const char  *what() const throw();
         };
-    
+
         class GradeTooLowException : public std::exception
         {
             public:
-                const char  *what() const throw()
-                {
-                    return ("Grade is too low!");
-                }
+                const char  *what() const throw();
         };
 };
 

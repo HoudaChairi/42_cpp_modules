@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 13:37:25 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/12 16:31:02 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/16 11:33:26 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,24 @@
 #include "RobotomyRequestForm.hpp"
 
 int main()
-{
-    
+{ 
     try
     {
-        Bureaucrat b("seqrat", 2);
-        // ShrubberyCreationForm s("mel-moun");
-        RobotomyRequestForm s("houda");
-        b.signForm(s);
+        Bureaucrat b("sokrate", 2);
+        ShrubberyCreationForm s("Shrubbery");
+        RobotomyRequestForm r("Robotomy");
+        PresidentialPardonForm p("President");
+        
+        // b.signForm(s);
         b.executeForm(s);
+        b.signForm(r);
+        b.executeForm(r);
+        b.signForm(p);
+        b.executeForm(p);
+        std::cout << b;
     }
     catch(const std::exception& e)
     {
-        std::cerr << e.what() << '\n';
-    }
-    
+        std::cout << e.what() << '\n';
+    } 
 }

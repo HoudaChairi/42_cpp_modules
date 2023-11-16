@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/11 19:29:59 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/15 18:54:31 by hchairi          ###   ########.fr       */
+/*   Created: 2023/11/11 19:32:12 by hchairi           #+#    #+#             */
+/*   Updated: 2023/11/16 11:46:00 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+#define PRESIDENTIALPARDONFORM_HPP
 
 #include <iostream>
 #include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-class RobotomyRequestForm : public AForm
+class PresidentialPardonForm : public AForm
 {
     public:
-        RobotomyRequestForm();
-        RobotomyRequestForm(const std::string &name);
-        RobotomyRequestForm(const RobotomyRequestForm& cp);
-        RobotomyRequestForm& operator=(const RobotomyRequestForm& ob);
-        ~RobotomyRequestForm();
+        PresidentialPardonForm();
+        PresidentialPardonForm(const std::string &name);
+        PresidentialPardonForm(const PresidentialPardonForm& cp);
+        PresidentialPardonForm& operator=(const PresidentialPardonForm& ob);
+        ~PresidentialPardonForm();
 
         void execute(Bureaucrat const & executor) const;
 };

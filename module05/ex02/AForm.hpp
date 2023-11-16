@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 11:51:06 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/12 10:22:26 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/16 10:21:22 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,37 @@ class AForm
         const int        _signGrade;
         const int        _executeGrade;
     public:
+        //canonical Form
         AForm();
         AForm(const std::string name, const int signGrade, const int executeGrade);
         AForm(const AForm& copy);
         AForm& operator=(const AForm& obj);
         virtual ~AForm();
-        
+        // Getters:
         std::string getName() const;
         bool getIsSigned() const;
         int getSignGrade() const;
         int getExecuteGrade() const;
-
-        void beSigned(const Bureaucrat& bCrat);
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
         class GradeTooHighException : public std::exception
         {
             public:
-                const char  *what() const throw()
-                {
-                    return ("Grade is too high!");
-                }
+                const char  *what() const throw();
         };
     
         class GradeTooLowException : public std::exception
         {
             public:
-                const char  *what() const throw()
-                {
-                    return ("Grade is too low!");
-                }
+                const char  *what() const throw();
         };
 
+        class SignedFormException : public std::exception
+        {
+            public:
+                const char  *what() const throw();
+        };
+        //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~/
+        void beSigned(const Bureaucrat& bCrat);
         virtual void execute(Bureaucrat const & executor) const = 0;
 };
 
