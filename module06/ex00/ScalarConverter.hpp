@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:16:10 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/21 11:54:15 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:39:33 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-#include <iomanip>
+// #include <iomanip>
+#include <cmath>
 
 enum check
 {

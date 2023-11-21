@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:42:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/21 15:15:29 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/21 16:48:23 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ void to_double(const std::string& s)
             std::cout << "double: " << d  << std::endl;
     }
 }
+
 void _literals(const std::string& s)
 {
     std::cout << "char: impossible" << std::endl;
@@ -113,17 +114,17 @@ void _literals(const std::string& s)
 
     if (s == "inf" || s == "+inf" || s == "+inff" || s == "inff")
     {
-        std::cout << "float: " << std::numeric_limits<double>::infinity() << "f" << std::endl;
-        std::cout << "double: " << std::numeric_limits<double>::infinity() << std::endl;    
+        std::cout << "float: inff" << std::endl;
+        std::cout << "double: inf" << std::endl;
     }
-    else if (s == "-inf"  || s == "-inff")
+    else if (s == "-inf" || s == "-inff")
     {
-        std::cout << "float: " << -std::numeric_limits<double>::infinity() << "f" << std::endl;
-        std::cout << "double: " << -std::numeric_limits<double>::infinity() << std::endl;  
+        std::cout << "float: -inff" << std::endl;
+        std::cout << "double: -inf" << std::endl; 
     }
     else
     {
-        std::cout << "float: " << std::numeric_limits<double>::quiet_NaN() << "f" << std::endl;
-        std::cout << "double: " << std::numeric_limits<double>::quiet_NaN() << std::endl;
+        std::cout << "float: nanf" << std::endl;
+        std::cout << "double: nan" << std::endl;
     }
 }
