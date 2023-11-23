@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/19 12:16:10 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/21 16:39:33 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/23 12:49:10 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 #define SCALARCONVERTER_HPP
 
 #include <iostream>
-// #include <iomanip>
-#include <cmath>
+#include <iomanip>
 
 enum check
 {
@@ -50,4 +49,5 @@ void to_int(const std::string& s);
 void to_float(const std::string& s);
 void to_double(const std::string& s);
 void _literals(const std::string& s);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 10:42:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/11/21 16:48:23 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/11/23 12:17:27 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,44 +68,45 @@ void to_int(const std::string& s)
 
 void to_float(const std::string& s)
 {
-    float f = std::stof(s);
-    double d = static_cast<double>(f);
-    print_char(f);
-    if (!cas_impossible(s))
-    {
-        std::cout << "int: " << static_cast<int>(f) << std::endl;
-        if (f -  static_cast<int>(f) == 0)
-            std::cout << "float: " << f << ".0f" << std::endl;
-        else
-            std::cout << "float: " << f << "f" << std::endl;
+   float f = std::strtod(s.c_str(), NULL);
+   double d = static_cast<double>(f);
+   print_char(f);
+   if (!cas_impossible(s))
+   {
+       std::cout << "int: " << static_cast<int>(f) << std::endl;
+       if (f - static_cast<int>(f) == 0)
+           std::cout << "float: " << f << ".0f" << std::endl;
+       else
+           std::cout << std::fixed << std::setprecision(2) << "float: " << f << "f" << std::endl;
 
-        if (d -  static_cast<int>(d) == 0)
-            std::cout << "double: " << d << ".0" << std::endl;
-        else
-            std::cout << "double: " << d  << std::endl;
-    }
+       if (d - static_cast<int>(d) == 0)
+           std::cout << "double: " << d << ".0" << std::endl;
+       else
+           std::cout << std::fixed << std::setprecision(2) << "double: " << d << std::endl;
+   }
 }
 
 void to_double(const std::string& s)
 {
-    double d = std::stod(s);
-    float f = static_cast<float>(d);
-    print_char(d);
-    if (!cas_impossible(s))
-    {
-        std::cout << "int: " << static_cast<int>(d) << std::endl;
-        
-        if (f -  static_cast<int>(f) == 0)  
-            std::cout << "float: " << f << ".0f" << std::endl;
-        else
-            std::cout << "float: " << f << "f" << std::endl;
+   double d = std::strtod(s.c_str(), NULL);
+   float f = static_cast<float>(d);
+   print_char(d);
+   if (!cas_impossible(s))
+   {
+       std::cout << "int: " << static_cast<int>(d) << std::endl;
+       
+       if (f - static_cast<int>(f) == 0) 
+           std::cout <<  "float: " << f << ".0f" << std::endl;
+       else
+           std::cout << std::fixed << std::setprecision(2) << "float: " << f << "f" << std::endl;
 
-        if (d -  static_cast<int>(d) == 0)  
-            std::cout << "double: " << d << ".0" << std::endl;
-        else
-            std::cout << "double: " << d  << std::endl;
-    }
+       if (d - static_cast<int>(d) == 0) 
+           std::cout <<  "double: " << d << ".0" << std::endl;
+       else
+           std::cout << std::fixed << std::setprecision(2) << "double: " << d << std::endl;
+   }
 }
+
 
 void _literals(const std::string& s)
 {
