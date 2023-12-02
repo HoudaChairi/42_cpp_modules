@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:24:22 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/02 18:20:01 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/02 20:15:42 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int main()
     }
     catch(const std::exception& e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cout << e.what() << std::endl;
     }
     return 0;
 }
