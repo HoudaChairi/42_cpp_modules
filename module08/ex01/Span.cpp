@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/28 12:24:15 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/02 18:18:09 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/03 17:15:15 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int Span::shortestSpan()
     int deff = tmpV[1] - tmpV[0];
     for (size_t i = 2; i < tmpV.size(); i++) 
     {  
-        if (deff >tmpV[i] - tmpV[i - 1])
+        if (deff > tmpV[i] - tmpV[i - 1])
             deff = tmpV[i] - tmpV[i - 1];
     }
     return (deff); 

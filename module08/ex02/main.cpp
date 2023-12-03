@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:42:02 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/03 11:58:15 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:16:56 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int main()
         ++it;
     }
     std::stack<int> s(mstack);
+    
     std::cout << "---------- std::list ---------" << std::endl;
     std::list<int> container;
     container.push_back(5);
@@ -51,7 +52,8 @@ int main()
     std::list<int>::iterator ite2 = container.end();
     ++it1;
     --it1;
-    while (it1 != ite2) {
+    while (it1 != ite2) 
+    {
         std::cout << *it1 << std::endl;
         ++it1;
     }
