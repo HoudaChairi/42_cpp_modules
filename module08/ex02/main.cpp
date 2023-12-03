@@ -6,12 +6,11 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:42:02 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/02 16:43:47 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/03 11:58:15 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "MutantStack.hpp"
-#include <list>
 
 int main()
 {

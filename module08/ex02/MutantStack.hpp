@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/30 16:42:33 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/02 16:36:02 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/03 11:55:03 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,25 @@
 
 #include <iostream>
 #include <stack>
+#include <deque>
+#include <list>
 
-template <typename T>
-class MutantStack : public std::stack<T>
+template <typename T, typename container = std::deque<T> >
+class MutantStack : public std::stack<T, container>
 {
-    public:
+    public: 
         MutantStack() {}
         MutantStack(const MutantStack& cp) {*this = cp;}
         MutantStack& operator=(const MutantStack& ob) {(void)ob; return (*this);}
         ~MutantStack() {}
 
-        typedef typename std::stack<T>::container_type::iterator iterator;
-        typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-        typedef typename std::stack<T>::container_type::reverse_iterator reverse_iterator;
-        typedef typename std::stack<T>::container_type::const_reverse_iterator const_reverse_iterator;
+        typedef typename std::stack<T, container>::container_type::iterator                 iterator;
+        typedef typename std::stack<T, container>::container_type::const_iterator           const_iterator;
+        typedef typename std::stack<T, container>::container_type::reverse_iterator         reverse_iterator;
+        typedef typename std::stack<T, container>::container_type::const_reverse_iterator   const_reverse_iterator;
         
         iterator begin() {return this->c.begin();}
-        iterator end() {return this->c.end();}
+        iterator end(){return this->c.end();}
 
         const_iterator begin() const {return this->c.begin();}
         const_iterator end() const {return this->c.end();}
