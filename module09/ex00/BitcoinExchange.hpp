@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:06:59 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/08 12:46:11 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:10:44 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,13 @@ class BitcoinExchange
 		BitcoinExchange& operator=( BitcoinExchange const & ob);
 		~BitcoinExchange();
 
-        static void parsing(std::ifstream& inFile, std::string& line, std::ifstream& dataBase);
-		static void check_syntax(std::string &line,std::ifstream& dataBase);
+        static void parsing(std::ifstream& inFile, std::string& line);
+		static void check_syntax(std::string &line);
 		static int check_value(double& value, std::string& line, char *ptr, size_t &pos);
-		static void store_date_value(std::ifstream &dataBase, std::string &date, double value);
+		static void store_inMap(std::ifstream &dataBase);
 		static int bad_input(std::string& line,  size_t &pos, char *ptr);
-		static int bad_value(double value);	
+		static int bad_value(double value);
+		static void calcul(std::string &date, double value);
 };
 
 #endif

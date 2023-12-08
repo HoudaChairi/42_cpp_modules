@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:40:22 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/08 12:33:10 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/08 13:18:27 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int main(int ac, char **av)
     {
         std::string line;
         try {
-            BitcoinExchange::parsing(inFile,line, dataBase);
+            BitcoinExchange::store_inMap(dataBase);
+            BitcoinExchange::parsing(inFile,line);
         } 
         catch (std::exception& e) {
             std::cout << e.what() << std::endl;
