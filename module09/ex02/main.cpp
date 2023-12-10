@@ -5,29 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/08 14:03:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/09 09:50:58 by hchairi          ###   ########.fr       */
+/*   Created: 2023/12/09 10:01:32 by hchairi           #+#    #+#             */
+/*   Updated: 2023/12/10 13:04:07 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RPN.hpp"
+#include "PmergeMe.hpp"
 
-int main(int ac, __unused char **av)
+int main(int ac, const char **av)
 {
-    if (ac != 2)
+    if (ac <= 1)
     {
-        std::cout << "Usage: ./RPN 'list of numbers'" << std::endl; 
+        std::cout << "Usage: ./PmergeMe 'list of numbers'" << std::endl; 
         return (1);
     }
     try
     {
-        std::string format = av[1];
-        RPN rpn(format);
-        std::cout << rpn.getResult() << std::endl;
+        PmergeMe merge(av);
+        merge.merge_recursive();
+        //
     }
     catch(const std::exception& e)
     {
-        std::cout << e.what() << std::endl;
+        std::cout << e.what() << '\n';
     }
-    return (0);
+    
 }

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:39:13 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/08 19:50:17 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/09 11:19:59 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 
 RPN::RPN() {}
 
-//  || 
-RPN::RPN(std::string& form) : _form(form)
+RPN::RPN(const std::string& form) : _form(form)
 {
 	unsigned int i = 0;
 	while (i < _form.length())

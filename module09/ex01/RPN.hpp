@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:39:20 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/08 19:26:24 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/09 11:20:59 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,17 @@ class RPN
 {
 	private:
 		std::stack<std::string> _stack;
-		std::string 		_form;
-		__unused int 				_result;
+		std::string				_form;
 	public:
 		RPN();
-		RPN(std::string&);
+		RPN(const std::string&);
 		RPN(const RPN& cp);
 		RPN& operator=(const RPN& ob);
 		~RPN();
 
 		bool	isOp(char c);
-		void calcul(char op);
-		int getResult();
+		void	calcul(char op);
+		int		getResult();
 
 		std::stack<std::string> getStack() const;
 };
