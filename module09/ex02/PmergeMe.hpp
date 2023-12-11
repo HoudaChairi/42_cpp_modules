@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:47 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/11 17:08:34 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/11 19:48:16 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ class PmergeMe
 		// std::vector<unsigned int> getVector() const;
 		// std::list<unsigned int> getList() const;
 		// std::string getArg() const;
-		std::vector<_ui_vector> getVectofV() const ;
+		std::vector<_ui_vector> getVectofV() const;
 		size_t	getNumber(const char *number);
 		bool	isNumber(const char *number);
 		void	merge_insert_recur();
 		void	create_vectors();
 		void	print_vectors();
 		void	sort_vectors();
-		void	copy_inBase_V();
+		void	copy_inBase_V(_vof_Vectors _vectofV);
 		void	printBaseVector(); // remove or modifier
-		void	mainCh_Pend_rest();
+		void	create_mainCh_Pend_rest();
 		void	print_mainChV();
 		void	print_pendV();
 		void	print_rest();

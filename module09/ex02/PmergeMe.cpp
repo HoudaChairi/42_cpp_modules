@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:40 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/11 17:28:29 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/11 19:46:24 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void PmergeMe::print_vectors()
 
 void PmergeMe::create_vectors()
 {
+	_vectofV.clear();
 	for(unsigned int i = 0; i < _vector.size(); i += _sizeofelem)
 	{
 		_ui_vector tmp_vec;
@@ -99,7 +100,7 @@ void PmergeMe::sort_vectors()
 	}
 }
 
-void PmergeMe::copy_inBase_V()
+void PmergeMe::copy_inBase_V(_vof_Vectors _vectofV)
 {
 	_vector.clear();
 	for (size_t i = 0; i < _vectofV.size(); i++)
@@ -139,7 +140,7 @@ void PmergeMe::print_mainChV()
 	{
 		std::cout << "[ "; 
 		_ui_vector::iterator it;
-		for (it = m_it->begin(); it != m_it->end() - 1; it++)
+		for (it = m_it->begin(); it != m_it->end(); it++)
 			std::cout << *it << " ";
 		std::cout << "] ";
 	}
@@ -159,7 +160,7 @@ void	PmergeMe::print_rest()
 }
 
 
-void PmergeMe::mainCh_Pend_rest()
+void PmergeMe::create_mainCh_Pend_rest()
 {
 	// first cheque rest
 	if (_vectofV.back().size() != _sizeofelem)
@@ -168,17 +169,22 @@ void PmergeMe::mainCh_Pend_rest()
 		_vectofV.pop_back();
 	}
 	//  puch first vectors in mainCh
+	_vofV_mainCh.reserve(_vector.size());
+	_vofV_mainCh.clear();
+	_vofV_pend.reserve(_vector.size());
+	_vofV_pend.clear();
+
 	_vofV_mainCh.push_back(_vectofV[0]);
 	_vofV_mainCh.push_back(_vectofV[1]);
 	_vof_Vectors::iterator v_it = _vectofV.begin() + 2;
 	for(; v_it != _vectofV.end(); v_it += 2)
 	{
 		if (*v_it == _vectofV.back())
-			_vofV_pend.push_back(std::make_pair(*v_it, _vofV_mainCh.end())); // _vectofV[0]
+			_vofV_pend.push_back(std::make_pair(*v_it, _vofV_mainCh.end()));
 		else
 		{
 			_vof_Vectors::iterator m_it = _vofV_mainCh.insert(_vofV_mainCh.end(), *(v_it + 1));
-			_vofV_pend.push_back(std::make_pair(*v_it,m_it));
+			_vofV_pend.push_back(std::make_pair(*v_it, m_it));
 		}
 	}
 }
@@ -199,7 +205,7 @@ void PmergeMe::merge_insert_recur()
 	std::cout << "AFTER sort vvecs :	";
 	print_vectors();
 	
-	copy_inBase_V();
+	copy_inBase_V(_vectofV);
 
 	printBaseVector();
 	std::cout << std::endl;
@@ -213,19 +219,24 @@ void PmergeMe::merge_insert_recur()
 			merge_insert_recur();
 		}
 	std::cout << "\nPart 2:	" << std::endl;
-	_vectofV.clear();
 	create_vectors();
-	mainCh_Pend_rest();
-	// printBaseVector();
-	// print_vectors();
-	std::cout << std::endl;
-	std::cout << "print_pendV	:	";
-	print_pendV();
-	std::cout << std::endl;
-	std::cout << "\nprint_mainChV	:	";
-	print_mainChV();
-	std::cout << "\nprint_rest	:	";
-	print_rest();
+	create_mainCh_Pend_rest();
+	// insert
+	if (_rest.size())
+	{
+		_vofV_mainCh.push_back(_rest.back());
+		_rest.clear();
+	}
+	copy_inBase_V(_vofV_mainCh);
+	// _sizeofelem /= 2; // I think the error is here 
+	// std::cout << std::endl;
+	// std::cout << "print_pendV	:	";
+	// print_pendV();
+	// std::cout << std::endl;
+	// std::cout << "\nprint_mainChV	:	";
+	// print_mainChV();
+	// std::cout << "\nprint_rest	:	";
+	// print_rest();
 }
 
 
