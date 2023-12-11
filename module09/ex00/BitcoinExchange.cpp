@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:07:09 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/08 13:23:24 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/11 10:10:15 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void BitcoinExchange::check_syntax(std::string &line)
     double value = strtod(line.c_str() + pos + 2, &ptr);
     if (pos == std::string::npos/* no pipe*/|| date.length() != 11 
         || (strptime(date.c_str(), "%Y-%m-%d", &tm) == NULL) || (tm.tm_year + 1900 < 2009)
-		|| !(tm.tm_mon == 2 || tm.tm_mday <= 29))
+		|| !(tm.tm_mon == 2 || tm.tm_mday <= 29) || (tm.tm_mday == 00))
         std::cout << "Error: bad input => " << line << std::endl;
     else if (check_value(value, line, ptr, pos))
         return ;

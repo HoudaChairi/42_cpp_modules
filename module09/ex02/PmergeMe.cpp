@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:40 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/10 17:59:58 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/11 17:28:29 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,13 +87,6 @@ void PmergeMe::create_vectors()
 	}
 }
 
-void	PmergeMe::swap_vectors(size_t i)
-{
-	_ui_vector tempVector = _vectofV[i];
-    _vectofV[i] = _vectofV[i + 1];
-    _vectofV[i + 1] = tempVector;
-}
-
 void PmergeMe::sort_vectors()
 {
 	for (size_t i = 0; i < _vectofV.size() - 1; i += 2)
@@ -101,7 +94,7 @@ void PmergeMe::sort_vectors()
 		if (_vectofV[i].size() ==  _vectofV[i + 1].size())
 		{
 			if (_vectofV[i].back() > _vectofV[i + 1].back())
-				swap_vectors(i);
+				std::swap(_vectofV[i], _vectofV[i + 1]);
 		}
 	}
 }
@@ -118,8 +111,8 @@ void PmergeMe::copy_inBase_V()
 
 void PmergeMe::printBaseVector() 
 {
-	std::cout << std::endl << std::endl;
-	std::cout << "=> Base Vector:     " << std::endl;
+	std::cout << std::endl;
+	std::cout << "=> Base Vector:		";
 	std::cout << "[";
 	for (_ui_vector::iterator it = _vector.begin(); it != _vector.end(); ++it)
 		std::cout  <<  *it << "  ";
@@ -127,38 +120,112 @@ void PmergeMe::printBaseVector()
 	std::cout << std::endl;
 }
 
-void PmergeMe::check_paires() 
+void PmergeMe::print_pendV()
 {
-	// for(int i = 0; i < 4; i++)
-	// {
-	// 	if (_vectofV[i].size() == _sizeofelem)
-	// 	{
-	// 		_sizeofelem *= 2;
-	// 		merge_recursive();
-	// 	}
-	// }
-	if (_vectofV[0].size() == _vectofV[1].size() == _vectofV[2].size() == _vectofV[3].size() == _sizeofelem)
+    std::vector<std::pair<_ui_vector, _vof_Vectors::iterator> >::iterator it = _vofV_pend.begin();
+    for (; it != _vofV_pend.end(); ++it)
+    {
+        for (_ui_vector::iterator itv = it->first.begin(); itv != it->first.end(); ++itv)
+            std::cout << *itv << "  ";
+        
+        std::cout << std::endl;  // Add a newline after printing each vector
+    }
+}
+
+void PmergeMe::print_mainChV()
+{
+	std::vector<_ui_vector>::iterator m_it;
+	for (m_it = _vofV_mainCh.begin(); m_it != _vofV_mainCh.end(); m_it++)
 	{
-		_sizeofelem *= 2;
-		_vectofV.clear();
-		merge_recursive();
+		std::cout << "[ "; 
+		_ui_vector::iterator it;
+		for (it = m_it->begin(); it != m_it->end() - 1; it++)
+			std::cout << *it << " ";
+		std::cout << "] ";
 	}
 }
 
-void PmergeMe::merge_recursive()
+void	PmergeMe::print_rest()
 {
-	create_vectors();
-	print_vectors();
-	sort_vectors();
-	std::cout << std::endl << std::endl;
-	std::cout << "=> AFTER SORTING:    " << std::endl;
-	copy_inBase_V();
-	check_paires();
-	std::cout << std::endl << std::endl;
+	_vof_Vectors::iterator r_it = _rest.begin();
+	for(; r_it != _rest.end(); r_it++)
+	{
+		std::cout << "[ "; 
+		_ui_vector::iterator it = r_it->begin();
+		for(; it != r_it->end(); it++)
+			std::cout << *it << " ";
+		std::cout << "] ";
+	}
+}
 
+
+void PmergeMe::mainCh_Pend_rest()
+{
+	// first cheque rest
+	if (_vectofV.back().size() != _sizeofelem)
+	{
+		_rest.push_back(_vectofV.back());
+		_vectofV.pop_back();
+	}
+	//  puch first vectors in mainCh
+	_vofV_mainCh.push_back(_vectofV[0]);
+	_vofV_mainCh.push_back(_vectofV[1]);
+	_vof_Vectors::iterator v_it = _vectofV.begin() + 2;
+	for(; v_it != _vectofV.end(); v_it += 2)
+	{
+		if (*v_it == _vectofV.back())
+			_vofV_pend.push_back(std::make_pair(*v_it, _vofV_mainCh.end())); // _vectofV[0]
+		else
+		{
+			_vof_Vectors::iterator m_it = _vofV_mainCh.insert(_vofV_mainCh.end(), *(v_it + 1));
+			_vofV_pend.push_back(std::make_pair(*v_it,m_it));
+		}
+	}
+}
+
+
+void PmergeMe::merge_insert_recur()
+{
+	std::cout << "Part 1:	" << std::endl;
+	std::cout << "sizeof: " << _sizeofelem << '\n';
+	printBaseVector();
+	create_vectors();
+	std::cout << "BEFOR sort vvecs :	";
 	print_vectors();
+	
+	sort_vectors();
+
+	std::cout << std::endl;
+	std::cout << "AFTER sort vvecs :	";
+	print_vectors();
+	
+	copy_inBase_V();
 
 	printBaseVector();
+	std::cout << std::endl;
+	
+	if (_vectofV[0].size() == _vectofV[1].size())
+		if (_vectofV[2].size() == _vectofV[3].size())
+		{
+			_sizeofelem *= 2;
+			std::cout << "here: "<< _sizeofelem << '\n';
+			_vectofV.clear();
+			merge_insert_recur();
+		}
+	std::cout << "\nPart 2:	" << std::endl;
+	_vectofV.clear();
+	create_vectors();
+	mainCh_Pend_rest();
+	// printBaseVector();
+	// print_vectors();
+	std::cout << std::endl;
+	std::cout << "print_pendV	:	";
+	print_pendV();
+	std::cout << std::endl;
+	std::cout << "\nprint_mainChV	:	";
+	print_mainChV();
+	std::cout << "\nprint_rest	:	";
+	print_rest();
 }
 
 
