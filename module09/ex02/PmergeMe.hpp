@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:47 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/11 19:48:16 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/12 12:58:08 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,28 @@
 
 typedef std::vector<unsigned int>	_ui_vector;
 typedef std::vector<_ui_vector>		_vof_Vectors;
-// typedef std::list<unsigned int> _ui_list;
+
+typedef std::list<unsigned int>		_ui_list;
+typedef std::list<_ui_list>			_list_of_lists;
 
 class PmergeMe
 {
 	private:
+		const char**				_arg;
+		size_t						_sizeofelem;
+				/* Vector Container */
 		_ui_vector				_vector;
 		_vof_Vectors			_vectofV;
 		
-		_vof_Vectors			_vofV_mainCh;
-		std::vector<std::pair<_ui_vector, _vof_Vectors::iterator> >	_vofV_pend;
-		_vof_Vectors			_rest;
-
-		// _ui_list	_list;
-		// std::list<_ui_list>		_list;
-		const char**				_arg;
-		size_t						_sizeofelem;
+		_vof_Vectors			_mainCh_V;
+		_vof_Vectors			_rest_V;
+		std::vector<std::pair<_ui_vector, _vof_Vectors::iterator> >	_pend_V;
+				/* List Container */
+		_ui_list					_list;
+		_list_of_lists				_lists;
+		_list_of_lists				_mainCh_L;
+		_list_of_lists				_rest_L;
+		std::list<std::pair<_ui_list, _list_of_lists::iterator> >	_pend_L;
 	public:
 		PmergeMe();
 		PmergeMe(const char **arg);
@@ -46,6 +52,7 @@ class PmergeMe
 		// std::vector<unsigned int> getVector() const;
 		// std::list<unsigned int> getList() const;
 		// std::string getArg() const;
+					/* Vector Container */
 		std::vector<_ui_vector> getVectofV() const;
 		size_t	getNumber(const char *number);
 		bool	isNumber(const char *number);
@@ -59,6 +66,11 @@ class PmergeMe
 		void	print_mainChV();
 		void	print_pendV();
 		void	print_rest();
+
+					/* List Container */
+		void	merge_insert_list();
+		void	create_lists();
+		void	printBaseList();
 
 };
 
