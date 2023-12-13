@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:01:32 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/12 12:59:27 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/13 19:08:05 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ int main(int ac, const char **av)
     try
     {
         PmergeMe merge(av);
-        // merge.merge_insert_recur();
-        merge.merge_insert_list();
+        merge.merge_insert_recur();
+        // merge.merge_insert_list();
+        merge.printBaseVector();
     }
     catch(const std::exception& e)
     {
         std::cout << e.what() << '\n';
     }
-    
 }

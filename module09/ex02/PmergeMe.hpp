@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:47 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/12 12:58:08 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/13 13:05:08 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,15 @@ class PmergeMe
 		void	print_mainChV();
 		void	print_pendV();
 		void	print_rest();
+		void	insert_to_mainCHV();
 
 					/* List Container */
 		void	merge_insert_list();
 		void	create_lists();
 		void	printBaseList();
+		void	print_lists();
+		void	sort_lists();
+		// void	copy_inBase_L(_list_of_lists _lists);
 
 };
 
