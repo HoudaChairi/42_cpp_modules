@@ -6,13 +6,13 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 14:03:56 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/09 09:50:58 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:32:03 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
-int main(int ac, __unused char **av)
+int main(int ac, char **av)
 {
     if (ac != 2)
     {
@@ -21,8 +21,7 @@ int main(int ac, __unused char **av)
     }
     try
     {
-        std::string format = av[1];
-        RPN rpn(format);
+        RPN rpn(av[1]);
         std::cout << rpn.getResult() << std::endl;
     }
     catch(const std::exception& e)

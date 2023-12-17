@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 10:40:22 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/08 14:00:19 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:40:32 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int main(int ac, char **av)
             std::cout << e.what() << std::endl;
         }
         inFile.close();
-        // close dataBase
+        dataBase.close();
     }
     return (0);
 }

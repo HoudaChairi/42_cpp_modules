@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 15:39:13 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/09 11:19:59 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/16 17:30:23 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ RPN::~RPN() {}
 RPN& RPN::operator=(const RPN& ob)
 {
 	if ( this != &ob )
-		return *this;	
+	{
+		_stack = ob._stack;
+		_form = ob._form;
+	}
 	return *this;
 }
 
