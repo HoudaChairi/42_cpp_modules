@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:40 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/17 20:06:03 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/19 11:18:06 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,16 @@
 /* ------------------------------- CONSTRUCTOR -------------------------------- */
 
 PmergeMe::PmergeMe() {}
+
+bool PmergeMe::isSorted_V(const _ui_vector& vec)
+{
+	_ui_vector tmp(vec);
+    std::sort(tmp.begin(), tmp.end());
+	for (size_t i = 0; i < vec.size(); ++i)
+		if (vec[i] != tmp[i])
+			return false;
+    return (true);
+}
 
 bool	PmergeMe::isNumber(const char *number)
 {
@@ -43,6 +53,8 @@ PmergeMe::PmergeMe(const char **arg) : _arg(arg), _sizeofelem(1)
 		_list.push_back(num);
 		i++;
 	}
+	if (isSorted_V(_vector))
+		throw std::runtime_error("is Sorted");
 }
 
 PmergeMe::PmergeMe(const PmergeMe& cp) {*this = cp;}
@@ -56,24 +68,31 @@ PmergeMe::~PmergeMe() {}
 PmergeMe& PmergeMe::operator=( PmergeMe const & ob)
 {
 	if (this != &ob)
-		return (*this);
+	{
+		_arg = ob._arg;
+		_sizeofelem = ob._sizeofelem;
+		_vector = ob._vector;
+		_vectofV = ob._vectofV;
+		_mainCh_V = ob._mainCh_V;
+		_rest_V = ob._rest_V;
+		_pend_V = ob._pend_V;
+		_list = ob._list;
+		_lists = ob._lists;
+		_mainCh_L = ob._mainCh_L;
+		_rest_L = ob._rest_L;
+		_pend_L = ob._pend_L;
+	}
 	return (*this);
 }
 
 /* --------------------------------- METHODS ---------------------------------- */
 
-void PmergeMe::print_vectors()
+void	PmergeMe::setSize(size_t size)
 {
-	_vof_Vectors::iterator v_it;
-	for (v_it = _vectofV.begin(); v_it != _vectofV.end(); v_it++)
-	{
-		std::cout << "[ "; 
-		_ui_vector::iterator it;
-		for (it = v_it->begin(); it != v_it->end(); it++)
-			std::cout << *it << " ";
-		std::cout << "] ";
-	}
+	_sizeofelem = size;
 }
+
+/* ----------> create Pairs <---------- */
 void PmergeMe::create_vectors()
 {
     _vectofV.clear();
@@ -87,7 +106,7 @@ void PmergeMe::create_vectors()
         _vectofV.push_back(tmp_vec);
     }
 }
-
+/* ----------> sort Vectors <---------- */
 void PmergeMe::sort_vectors()
 {
 	for (size_t i = 0; i < _vectofV.size() - 1; i += 2)
@@ -99,7 +118,7 @@ void PmergeMe::sort_vectors()
 		}
 	}
 }
-
+/* ----------> copy Vectors in Base <---------- */
 void PmergeMe::copy_inBase_V(_vof_Vectors _vectofV)
 {
 	_vector.clear();
@@ -110,7 +129,7 @@ void PmergeMe::copy_inBase_V(_vof_Vectors _vectofV)
             _vector.push_back(*it);
 	}
 }
-
+/* ----------> check Pairs <---------- */
 void    PmergeMe::check_pairs_V()
 {
     _vof_Vectors::iterator it1= _vectofV.begin();
@@ -134,18 +153,28 @@ void    PmergeMe::check_pairs_V()
             merge_insert_recur();
         }
 }
-
+/* ----------> print Base <---------- */
 void PmergeMe::printBaseVector() 
 {
-	std::cout << std::endl;
-	std::cout << "=> Base Vector:		";
-	std::cout << "[";
 	for (_ui_vector::iterator it = _vector.begin(); it != _vector.end(); ++it)
 		std::cout  << *it << "  ";
-	std::cout << "]";
 	std::cout << std::endl;
 }
 
+/* ----------> print Vectors <---------- */
+void PmergeMe::print_vectors()
+{
+	_vof_Vectors::iterator v_it;
+	for (v_it = _vectofV.begin(); v_it != _vectofV.end(); v_it++)
+	{
+		std::cout << "[ "; 
+		_ui_vector::iterator it;
+		for (it = v_it->begin(); it != v_it->end(); it++)
+			std::cout << *it << " ";
+		std::cout << "] ";
+	}
+}
+/* ----------> print mainCH Pend Rest <---------- */
 void PmergeMe::print_pendV()
 {
     _pend_vectors::iterator it = _pend_V.begin();
@@ -183,7 +212,7 @@ void	PmergeMe::print_restV()
 		std::cout << "] ";
 	}
 }
-
+/* ---------->	create mainCH Pend Rest	<---------- */
 void PmergeMe::create_mainCh_pend_V()
 {
 	_mainCh_V.push_back(_vectofV[0]);
@@ -204,7 +233,6 @@ void PmergeMe::create_mainCh_pend_V()
 		}
 	}
 }
-
 void PmergeMe::create_mainCh_Pend_rest_V()
 {
 	if (_vectofV.back().size() != _sizeofelem)
@@ -219,11 +247,11 @@ void PmergeMe::create_mainCh_Pend_rest_V()
 	create_mainCh_pend_V();
 }
 
+/* ---------->	insert to mainCH	<---------- */
 bool comp_V(_ui_vector a, _ui_vector b)
 {
 	return (a.back() <= b.back());
 }
-
 void	PmergeMe::insert_to_mainCHV()
 {
 	long jacob[] = {2,2, 6, 10, 22, 42, 86, 170, 342, 682, 1366, 2730, 5462, 10922, 21846, 
@@ -264,60 +292,18 @@ void	PmergeMe::insert_to_mainCHV()
 	}
 }
 
-
+/* ---------->	recursive function	<---------- */
 void PmergeMe::merge_insert_recur()
 {
-	std::cout << "#################  Part 1:	" << std::endl;
-	printBaseVector();
-	
 	create_vectors();
-
-	std::cout << "BEFOR sort vvecs :	";
-	print_vectors();
-	
 	sort_vectors();
-
-	std::cout << std::endl;
-	std::cout << "AFTER sort vvecs :	";
-	print_vectors();
-	
 	copy_inBase_V(_vectofV);
-	// std::cout << "hi\n";
-
-	printBaseVector();
-	std::cout << std::endl;
 	
 	check_pairs_V();
-	std::cout << "\n\nPart 2:-----------------------	" << std::endl;
+	
 	create_vectors();
-
-	std::cout << std::endl;
-	std::cout << "vector:		";
-	print_vectors();
-	
 	create_mainCh_Pend_rest_V();
-	
-	std::cout << "\n************* create :" << std::endl;
-	std::cout << "\nmainChV	:	";
-	print_mainChV();
-	std::cout << std::endl;
-	std::cout << "pendV	:	";
-	print_pendV();
-	std::cout << "\nrest	:	";
-	print_restV();
-	
-	
-	insert_to_mainCHV(); 
-	
-	std::cout << "\n************* insert :" << std::endl;
-	std::cout << "\nmainChV	:	";
-	print_mainChV();
-	std::cout << std::endl;
-	std::cout << "pendV	:	";
-	print_pendV();
-	std::cout << "\nrest	:	";
-	print_restV();
-
+	insert_to_mainCHV();
 	if (!_rest_V.empty())
 	{
 		_mainCh_V.push_back(_rest_V.back());

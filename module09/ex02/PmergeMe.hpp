@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:47 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/17 20:06:12 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/18 11:55:03 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ class PmergeMe
 
 				/* Vector Container */
 		size_t	getNumber(const char *number);
+		bool	isSorted_V(const _ui_vector& vec);
 		bool	isNumber(const char *number);
 		void	merge_insert_recur();
 		void	create_vectors();
@@ -84,6 +85,8 @@ class PmergeMe
 		void	print_pendL();
 		void	print_rest_L();
 		void	insert_to_mainCH_L();
+		
+		void	setSize(size_t size);
 };
 
 #endif

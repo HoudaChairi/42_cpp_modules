@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 11:39:03 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/17 20:05:44 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/19 10:25:31 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 /* --------------------------------- METHODS ---------------------------------- */
 
-                /* ----------> copy Lists in Base <---------- */
-void    PmergeMe::copy_inBase_L(_list_of_lists _lists)
+/* ---------->  create Pairs    <---------- */
+void    PmergeMe::create_lists()
 {
-    _list.erase(_list.begin(), _list.end());
-    _list_of_lists::iterator it_l = _lists.begin();
-    for (; it_l != _lists.end(); ++it_l) 
+    _lists.clear();
+    for (_ui_list::iterator it = _list.begin(); it != _list.end(); )
     {
-        _ui_list::const_iterator it = it_l->begin();
-        for (; it != it_l->end(); ++it) 
-        {
-            _list.push_back(*it);
-        }
+        _ui_list tmp_list;
+        for (unsigned int c = 0; c < _sizeofelem && it != _list.end(); ++c, ++it)
+            tmp_list.push_back(*it);
+        _lists.push_back(tmp_list);
     }
 }
 
-                /* ----------> sort Lists <---------- */
+/* ---------->  sort Lists  <---------- */
 void    PmergeMe::sort_lists()
 {
     _list_of_lists::iterator it = _lists.begin();
@@ -45,46 +43,22 @@ void    PmergeMe::sort_lists()
         std::advance(it, 2);
     }
 }
-                /* ----------> print Lists <---------- */
-void    PmergeMe::print_lists()
+/* ---------->  copy Lists in Base  <---------- */
+void    PmergeMe::copy_inBase_L(_list_of_lists _lists)
 {
-    _list_of_lists::iterator it_l;
-    for(it_l = _lists.begin(); it_l != _lists.end(); it_l++)
+    _list.erase(_list.begin(), _list.end());
+    _list_of_lists::iterator it_l = _lists.begin();
+    for (; it_l != _lists.end(); ++it_l) 
     {
-        std::cout << "[ "; 
-        _ui_list::iterator it;
-        for (it = it_l->begin(); it != it_l->end(); it++)
-            std::cout << *it << " ";
-        std::cout << "] ";
+        _ui_list::const_iterator it = it_l->begin();
+        for (; it != it_l->end(); ++it) 
+        {
+            _list.push_back(*it);
+        }
     }
 }
 
-                /* ----------> print Base <---------- */
-void    PmergeMe::printBaseList()
-{
-    std::cout << std::endl;
-    std::cout << "=> Base List:		";
-    std::cout << "[";
-    for(_ui_list::iterator it = _list.begin(); it != _list.end(); ++it)
-        std::cout << *it << "  ";
-    std::cout << "]";
-	std::cout << std::endl;
-}
-
-                /* ----------> create Pairs <---------- */
-void    PmergeMe::create_lists()
-{
-    _lists.clear();
-    for (_ui_list::iterator it = _list.begin(); it != _list.end(); )
-    {
-        _ui_list tmp_list;
-        for (unsigned int c = 0; c < _sizeofelem && it != _list.end(); ++c, ++it)
-            tmp_list.push_back(*it);
-        _lists.push_back(tmp_list);
-    }
-}
-
-                /* ----------> check Pairs <---------- */
+/* ----------> check Pairs <---------- */
 void    PmergeMe::check_pairs_L()
 {
     _list_of_lists::iterator it1= _lists.begin();
@@ -108,7 +82,29 @@ void    PmergeMe::check_pairs_L()
             merge_insert_list();
         }
 }
-                /* ----------> print mainCH Pend Rest <---------- */
+
+/* ---------->  print Base  <---------- */
+void    PmergeMe::printBaseList()
+{
+    for(_ui_list::iterator it = _list.begin(); it != _list.end(); ++it)
+        std::cout << *it << "  ";
+	std::cout << std::endl;
+}
+/* ---------->  print Lists  <---------- */
+void    PmergeMe::print_lists()
+{
+    _list_of_lists::iterator it_l;
+    for(it_l = _lists.begin(); it_l != _lists.end(); it_l++)
+    {
+        std::cout << "[ "; 
+        _ui_list::iterator it;
+        for (it = it_l->begin(); it != it_l->end(); it++)
+            std::cout << *it << " ";
+        std::cout << "] ";
+    }
+}
+
+/* ---------->  print mainCH Pend Rest  <---------- */
 void    PmergeMe::print_mainChL()
 {
 	_list_of_lists::iterator m_it;
@@ -148,7 +144,7 @@ void	PmergeMe::print_rest_L()
 	}
 }
 
-                /* ----------> create mainCH Pend Rest <---------- */
+/* ---------->  create mainCH Pend Rest <---------- */
 void    PmergeMe::create_mainCh_pend_L()
 {
     _list_of_lists::iterator it_l = _lists.begin(); 
@@ -183,12 +179,12 @@ void    PmergeMe::create_mainCh_Pend_rest_L()
 	}
     create_mainCh_pend_L();
 }
-                /* ----------> insert to mainCH <---------- */
+
+/* ---------->  insert to mainCH    <---------- */
 bool comp_L(_ui_list a, _ui_list b)
 {
 	return (a.back() <= b.back());
-}
-                
+}              
 void	PmergeMe::insert_to_mainCH_L()
 {
     long jacob[] = {2, 2, 6, 10, 22, 42, 86, 170, 342, 682, 1366, 2730, 5462, 10922, 21846, 
@@ -222,55 +218,18 @@ void	PmergeMe::insert_to_mainCH_L()
         count = 0;
     }
 }
-                /* ----------> recursive function <---------- */
+/* ---------->  recursive function  <---------- */
 void    PmergeMe::merge_insert_list()
 {
-    printBaseList();
     create_lists();
-    std::cout << "BEFOR sort vvecs :	";
-    print_lists();
-
-    sort_lists();
-    
-    std::cout << std::endl;
-	std::cout << "AFTER sort vvecs :	";
-    print_lists();
-    
+    sort_lists(); 
     copy_inBase_L(_lists);
     
-    printBaseList();
-    std::cout << std::endl;
-
     check_pairs_L();
-    std::cout << "\n\nPart 2:-----------------------	" << std::endl;
+    
     create_lists();
-    
-    std::cout << std::endl;
-	std::cout << "list:		";
-    print_lists();
-
     create_mainCh_Pend_rest_L();
-
-    std::cout << "\n************* create :" << std::endl;
-	std::cout << "\nmainChV	:	";
-    print_mainChL();
-    std::cout << std::endl;
-	std::cout << "pendV	:	";
-    print_pendL();
-    std::cout << "\nrest	:	";
-	print_rest_L();
-
     insert_to_mainCH_L();
-	
-	std::cout << "\n************* insert :" << std::endl;
-	std::cout << "\nmainChV	:	";
-	print_mainChV();
-	std::cout << std::endl;
-	std::cout << "pendV	:	";
-	print_pendV();
-	std::cout << "\nrest	:	";
-	print_restV();
-    
     if (_rest_L.size())
 	{
 		_mainCh_L.push_back(_rest_L.back());

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:01:32 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/17 20:05:16 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/18 12:45:04 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,31 @@ int main(int ac, const char **av)
     }
     try
     {
-        // std::clock_t start = std::clock();
-        /* ------------> vector <------------ */
+        /* ------------------------>    vector  <------------------------ */
         PmergeMe merge(av);
-        // std::cout << "BEFOR:    ";
-        // std::cout << std::endl;
-        // std::cout << "AFTER :	";
-        // merge.merge_insert_recur();
-        // merge.printBaseVector();
-
         
-        // double duration = ( std::clock() - start ) / (double) CLOCKS_PER_SEC;
-        // std::cout << "Program took " << duration << " seconds to execute \n";
+        std::cout << "Before:    ";
+        merge.printBaseVector();
         
+        std::clock_t start = std::clock();
+        merge.merge_insert_recur();
+        std::clock_t end = std::clock();
+        
+        std::cout << "After:     ";   
+        merge.printBaseVector();
+        
+        std::cout << "Time to process a range of " << ac - 1;
+        std::cout <<  " elements : " << end - start << " us " << std::endl;
+        
+        merge.setSize(1);
+        /* ------------------------>    list    <------------------------ */
+        start = std::clock();
         merge.merge_insert_list();
-        merge.printBaseList();
+        end = std::clock();
+        // std::cout << "After:     ";   
+        // merge.printBaseVector();
+        std::cout << "Time to process a range of " << ac - 1;
+        std::cout << " elements : " << end - start << " us " << std::endl;
     }
     catch(const std::exception& e)
     {

@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/05 10:07:09 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/11 10:10:15 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/18 15:10:18 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ BitcoinExchange::~BitcoinExchange() {}
 BitcoinExchange& BitcoinExchange::operator=(const BitcoinExchange& ob)
 {
 	if (this != &ob)
-		return *this;
+		_map = ob._map;
 	return *this;
 }
 
@@ -101,7 +101,7 @@ void BitcoinExchange::check_syntax(std::string &line)
     size_t pos = line.find("|", 0);
     std::string date = line.substr(0, pos);
     double value = strtod(line.c_str() + pos + 2, &ptr);
-    if (pos == std::string::npos/* no pipe*/|| date.length() != 11 
+    if (pos == std::string::npos || date.length() != 11 
         || (strptime(date.c_str(), "%Y-%m-%d", &tm) == NULL) || (tm.tm_year + 1900 < 2009)
 		|| !(tm.tm_mon == 2 || tm.tm_mday <= 29) || (tm.tm_mday == 00))
         std::cout << "Error: bad input => " << line << std::endl;
