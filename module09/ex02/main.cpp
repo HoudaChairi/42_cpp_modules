@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:01:32 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/18 12:45:04 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:58:49 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int main(int ac, const char **av)
         merge.printBaseVector();
         
         std::cout << "Time to process a range of " << ac - 1;
-        std::cout <<  " elements : " << end - start << " us " << std::endl;
+        std::cout << " elements : " << (end - start) * 1000.0 / CLOCKS_PER_SEC;
+        std::cout << " us " << std::endl;
         
         merge.setSize(1);
         /* ------------------------>    list    <------------------------ */
@@ -45,7 +46,8 @@ int main(int ac, const char **av)
         // std::cout << "After:     ";   
         // merge.printBaseVector();
         std::cout << "Time to process a range of " << ac - 1;
-        std::cout << " elements : " << end - start << " us " << std::endl;
+        std::cout << " elements : " << (end - start) * 1000.0 / CLOCKS_PER_SEC;
+        std::cout << " us " << std::endl;
     }
     catch(const std::exception& e)
     {

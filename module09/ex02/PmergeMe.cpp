@@ -6,7 +6,7 @@
 /*   By: hchairi <hchairi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 10:15:40 by hchairi           #+#    #+#             */
-/*   Updated: 2023/12/19 11:18:06 by hchairi          ###   ########.fr       */
+/*   Updated: 2023/12/19 14:56:49 by hchairi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,7 +213,7 @@ void	PmergeMe::print_restV()
 	}
 }
 /* ---------->	create mainCH Pend Rest	<---------- */
-void PmergeMe::create_mainCh_pend_V()
+void PmergeMe:: create_mainCh_pend_V()
 {
 	_mainCh_V.push_back(_vectofV[0]);
 	_mainCh_V.push_back(_vectofV[1]);
